@@ -5,7 +5,7 @@
 
 ## 2.1. Аудитория и ее активность
 
-Месячная аудитория Instagram в России на 2021 год составляет 54 млн [(источник)](https://blog.hootsuite.com/instagram-demographics/)
+Месячная аудитория Instagram в России на 2021 год составляет 54 млн [(источник)](https://blog.hootsuite.com/instagram-demographics/)  
 Дневная аудитория ~30 млн
 
 На 2021 год в среднем, пользователь тратит 29 минут в день [(источник)](https://www.emarketer.com/content/emarketer-reduces-us-time-spent-estimates-for-facebook-and-snapchat)  
