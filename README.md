@@ -100,3 +100,5 @@ POST 1 * 29 min / 3 min * k = 3 356 rps (2,2 Mb/s) (without gzip)
 ```
 POST 5 * 29 min / 3 min * k = 16 782 rps
 ```
+# 3. Логическая схема БД
+![](./media/dbLogic.png)
