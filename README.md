@@ -100,3 +100,5 @@ POST: 10 * 1 month / 30 days * k = 115 rps
 |Like|-|16 782|
 # 3. Логическая схема БД
 ![](./media/dbLogic.png)
+# n. Схема проекта
+![](./media/projArch.jpeg)
