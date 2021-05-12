@@ -129,6 +129,52 @@ POST: 10 * 1 month / 30 days * k = 115 rps
 
 Для обеспечения отказоустойчивости используем master-slave репликацию. По 2 реплики на каждый сервер. Мастер будет принимать запросы на запись, реплики - на чтение. При выходе из строя мастера, одна из реплик возмет на себя запросы на изменение. При выходе из строя всех реплик, запросы будут приходить только на мастер.
 ## 3.3. Размер данных
+### Фотографии
+Аватарки на всех пользователей
+```
+avatars = 54 000 000 * 5 kb = 257,49 Gb
+avatars_speed = 1 rps * 24h * 60m * 60s = 0,5 Tb/month
+posts_speed = 174 rps * 24h * 60m * 60s = 2,8 Tb/day = 84Tb/month
+overall = 84,5 TB/month
+```
+### Сессии
+Учитываем активную дневную аудиторию, т.к. у пользователей которые долго не заходят сессии пропадают
+```
+(4b (id) + 4b (user_id) + 64b (value) + 4b (expired_at)) * 30 000 000 = 2,12 Gb
+```
+### Пользователи
+Учитываем месячную аудиторию
+```
+(4b (id) + 32b (username) + 60b (email) + 32b (name) + 256b (description) + 1b (gender) + ~120b (avatar url)) * 54 000 000 000 = 25,4 Gb
 
+1rps * 24 * 60 * 60 = 41,61 Mb/day = 1,22 Gb/month
+```
+### Посты
+```
+(4b (id) + 4b (author_id) + ~120b (image url) + 512b (description) + 4 (likes_count) + 4 (comments_count) + 4 (created_at)) * 174 rps * 24h * 60m * 60s = 9,13 Gb/day = 273,86 Gb/month
+```
+### Комментарии
+В среднем у постов 4 комментариев [(источник)](https://blog.cybermarketing.ru/vovlechennost-instagram/)
+```
+(4b (id) + 4b (author_id) + 4b (post_id) + 200b (text) * 4b (created_at)) * 4 * 174 rps * 24 * 60 * 60 = 12 Gb/day = 362,9 Gb/month
+```
+### Лайки
+В среднем у поста 100 лайков [(источник)](https://blog.cybermarketing.ru/vovlechennost-instagram/)
+```
+(4b (id) + 4b (author_id) + 4b (post_id)) * 100 * 174 * 24 * 60 * 60 = 16 Gb/day = 504,04 Gb/month
+```
+### Подписки
+```
+(4b (id) + 4b (author_id) + 4b (following_id)) * 115 * 24 * 60 * 60 = 113,71 Mb/day = 3,33 Gb/month
+```
+|Сущность|Размер|
+|---|---|
+|Фотографии|0,25 Tb + 84,5 Tb/month|
+|Сессии|2,12 Gb|
+|Пользователи|25,4Gb + 1,22 Gb/month|
+|Посты|273,86 Gb/month|
+|Комментарии|362,9 Gb/month|
+|Лайки|504,04 Gb/month|
+|Подписки|3,33 Gb/month|
 # n. Схема проекта
 ![](./media/projArch.jpeg)
