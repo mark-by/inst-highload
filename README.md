@@ -133,9 +133,9 @@ POST: 10 * 1 month / 30 days * k = 115 rps
 Аватарки на всех пользователей
 ```
 avatars = 54 000 000 * 5 kb = 257,49 Gb
-avatars_speed = 1 rps * 24h * 60m * 60s = 0,5 Tb/month
-posts_speed = 174 rps * 24h * 60m * 60s = 2,8 Tb/day = 84Tb/month
-overall = 84,5 TB/month
+avatars_speed = 5 kb * 1 rps * 24h * 60m * 60s = 0,5 Tb/month
+posts_speed = 240 kb * 174 rps * 24h * 60m * 60s = 3,36 Tb/day = 100,81Tb/month
+overall = 101,3 TB/month
 ```
 ### Сессии
 Учитываем активную дневную аудиторию, т.к. у пользователей которые долго не заходят сессии пропадают
@@ -169,7 +169,7 @@ overall = 84,5 TB/month
 ```
 |Сущность|Размер|
 |---|---|
-|Фотографии|0,25 Tb + 84,5 Tb/month|
+|Фотографии|0,25 Tb + 101,3 Tb/month|
 |Сессии|2,12 Gb|
 |Пользователи|25,4Gb + 1,22 Gb/month|
 |Посты|273,86 Gb/month|
